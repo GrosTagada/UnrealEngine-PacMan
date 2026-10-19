@@ -41,6 +41,8 @@ void APlayerPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	
+	
+	
 	AddMovementInput(GetActorRightVector(), PlayerDirection.X);
 	AddMovementInput(GetActorForwardVector(), PlayerDirection.Y);
 }
@@ -65,8 +67,5 @@ void APlayerPawn::Move(const FInputActionValue& Value)
 	FVector2D MovementVector = Value.Get<FVector2D>();
 	
 	PlayerDirection = MovementVector;
-	
-	if (GEngine)
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Input value : %s"),*MovementVector.ToString()));
 }
 
