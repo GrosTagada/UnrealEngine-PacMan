@@ -52,5 +52,5 @@ void AGhostManager::SetGhostMode(EGhostMode NewMode)
 
 void AGhostManager::test()
 {
-	SetGhostMode(EGhostMode::Frightened);
+	//SetGhostMode(EGhostMode::Frightened);
 }

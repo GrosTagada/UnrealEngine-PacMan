@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
+#include "TP2_PacMan/AI/System/GhostManager.h"
 #include "GamePlayGameMode.generated.h"
 
 /**
@@ -14,4 +15,8 @@ class TP2_PACMAN_API AGamePlayGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 	
+	
+public: 
+	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category="GamePlayGameMode")
+	TObjectPtr<AGhostManager> GhostManager;
 };
