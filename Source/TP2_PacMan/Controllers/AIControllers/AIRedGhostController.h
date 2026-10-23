@@ -20,5 +20,7 @@ class TP2_PACMAN_API AAIRedGhostController : public AAIGhostController
 	
 public:
 	
-	virtual FVector Chase() override;
+	virtual FVector CalculateChaseTarget() override;
+	virtual FVector CalculateScatterTarget() override;
+	virtual FVector CalculateFrightenedTarget() override;
 };

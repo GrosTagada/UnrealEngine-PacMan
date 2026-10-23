@@ -23,18 +23,13 @@ void AGhostManager::BeginPlay()
 	
 	//Je lance un timer
 	FTimerManager& WorldTimer = GetWorld()->GetTimerManager();
-	WorldTimer.SetTimer(TimerHandle,this,&AGhostManager::test,ChangeTime);
+	WorldTimer.SetTimer(TimerHandle,this,&AGhostManager::test,10.0f);
 }
 
 // Called every frame
 void AGhostManager::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-}
-
-void AGhostManager::test()
-{
-	SetGhostMode(EGhostMode::Scatter);
 }
 
 void AGhostManager::SetGhostMode(EGhostMode NewMode)
@@ -53,4 +48,9 @@ void AGhostManager::SetGhostMode(EGhostMode NewMode)
 			Controller->SetGhostMode(NewMode);
 		}
 	}
+}
+
+void AGhostManager::test()
+{
+	SetGhostMode(EGhostMode::Frightened);
 }

@@ -22,7 +22,9 @@ public:
 	
 	void SetGhostMode(EGhostMode NewMode);
 	
-	virtual FVector Chase() PURE_VIRTUAL(AAIGhostController::Chase, return FVector(0););
+	virtual FVector CalculateChaseTarget() PURE_VIRTUAL(AAIGhostController::CalculateChaseTarget, return FVector(0);) ;
+	virtual FVector CalculateScatterTarget() PURE_VIRTUAL(AAIGhostController::CalculateScatterTarget, return FVector(0););
+	virtual FVector CalculateFrightenedTarget() PURE_VIRTUAL(AAIGhostController::CalculateScatterTarget, return FVector(0););
 	FVector CalculateSpawnTarget() const;
 	
 	UPROPERTY(Transient)

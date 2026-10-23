@@ -14,6 +14,7 @@ class TP2_PACMAN_API AAIPinkGhostController : public AAIGhostController
 {
 	GENERATED_BODY()
 	
+	UPROPERTY(EditAnywhere, Category="PinkGhostController")
 	float AnticipationDistance = 3.0f;
 	
 	class UNavigationSystemV1* NavArea;
@@ -21,5 +22,7 @@ class TP2_PACMAN_API AAIPinkGhostController : public AAIGhostController
 	FVector TargetLocation;
 public:
 	
-	virtual FVector Chase() override;
+	virtual FVector CalculateChaseTarget() override;
+	virtual FVector CalculateScatterTarget() override;
+	virtual FVector CalculateFrightenedTarget() override;
 };

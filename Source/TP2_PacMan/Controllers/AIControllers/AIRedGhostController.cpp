@@ -6,7 +6,7 @@
 #include "BehaviorTree/BlackboardComponent.h"
 #include "TP2_PacMan/Controllers/AIControllers/AIGhostController.h"
 
-FVector AAIRedGhostController::Chase()
+FVector AAIRedGhostController::CalculateChaseTarget() 
 {
 	if (!NavArea)
 		NavArea = FNavigationSystem::GetCurrent<UNavigationSystemV1>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
@@ -18,6 +18,33 @@ FVector AAIRedGhostController::Chase()
 
 		// Return true if found a random point in the navigation and around your player position
 		if (NavArea->K2_GetRandomLocationInNavigableRadius(GetWorld(), PlayerPosition, TargetLocation, 100.0f))
+		{
+			return TargetLocation;
+		}
+	}
+	if (GEngine)
+		GEngine->AddOnScreenDebugMessage(-1,10.0f,FColor::Blue,TEXT("Red Ghost"));
+	
+	return FVector(0);
+}
+
+FVector AAIRedGhostController::CalculateScatterTarget()
+{
+	return FVector(0);
+}
+
+FVector AAIRedGhostController::CalculateFrightenedTarget()
+{
+	if (!NavArea)
+		NavArea = FNavigationSystem::GetCurrent<UNavigationSystemV1>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
+
+	if (NavArea)
+	{
+		// Get the current player position
+		FVector PlayerPosition = GetWorld()->GetFirstPlayerController()->GetPawn()->GetActorLocation();
+
+		// Return true if found a random point in the navigation and around your player position
+		if (NavArea->K2_GetRandomLocationInNavigableRadius(GetWorld(), GetPawn()->GetActorLocation(), TargetLocation, 600.0f))
 		{
 			return TargetLocation;
 		}

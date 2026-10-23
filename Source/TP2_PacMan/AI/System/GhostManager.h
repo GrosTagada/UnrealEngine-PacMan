@@ -24,6 +24,9 @@ class TP2_PACMAN_API AGhostManager : public AActor
 	
 public :
 	void SetGhostMode(EGhostMode NewMode);
+	
+	UFUNCTION()
+	void test();
 public:	
 	// Sets default values for this actor's properties
 	AGhostManager();
@@ -36,5 +39,4 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	
-	void test();
 };
