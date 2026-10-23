@@ -2,7 +2,6 @@
 
 
 #include "PlayerPawn.h"
-
 #include "EnhancedInputComponent.h"
 #include "Engine/Engine.h"
 
@@ -25,7 +24,7 @@ APlayerPawn::APlayerPawn()
 void APlayerPawn::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
 void APlayerPawn::PossessedBy(AController* NewController)
@@ -36,15 +35,21 @@ void APlayerPawn::PossessedBy(AController* NewController)
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("possess"));
 }
 
+FVector2D APlayerPawn::GetDirection()
+{
+	return PlayerDirection;
+}
+
 // Called every frame
 void APlayerPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	
+	AddMovementInput(GetActorRightVector(), PlayerDirection.Y);
+	AddMovementInput(GetActorForwardVector(), PlayerDirection.X);
 	
-	
-	AddMovementInput(GetActorRightVector(), PlayerDirection.X);
-	AddMovementInput(GetActorForwardVector(), PlayerDirection.Y);
+	if (GEngine)
+		GEngine->AddOnScreenDebugMessage(-1,2.0f,FColor::Blue,FString::Printf(TEXT("X : %f , Y: %f"),PlayerDirection.X,PlayerDirection.Y));
 }
 
 // Called to bind functionality to input

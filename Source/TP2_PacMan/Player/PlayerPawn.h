@@ -29,12 +29,17 @@ class TP2_PACMAN_API APlayerPawn : public APawn
 	UPROPERTY(VisibleAnywhere, Category="PlayerPawn|Debug")
 	FVector2D PlayerDirection;
 	
+	
+	//Mettre des flipbooks plutôt que juste un sprite
+	
 public:
 	// Sets default values for this pawn's properties
 	APlayerPawn();
 	
 	virtual void BeginPlay() override;
 	virtual void PossessedBy(AController* NewController) override;
+	
+	FVector2D GetDirection();
 protected:
 	
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
