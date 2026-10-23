@@ -23,6 +23,7 @@ public:
 	void SetGhostMode(EGhostMode NewMode);
 	
 	virtual FVector Chase() PURE_VIRTUAL(AAIGhostController::Chase, return FVector(0););
+	FVector CalculateSpawnTarget() const;
 	
 	UPROPERTY(Transient)
 	class UBehaviorTreeComponent* BehaviorTreeComponent;

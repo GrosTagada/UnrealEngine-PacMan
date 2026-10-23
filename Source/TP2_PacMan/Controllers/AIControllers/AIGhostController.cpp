@@ -35,5 +35,13 @@ void AAIGhostController::SetGhostMode(EGhostMode NewMode)
 		BlackboardComponent->SetValueAsEnum("GhostMode",static_cast<uint8>(NewMode));
 }
 
+FVector AAIGhostController::CalculateSpawnTarget() const
+{
+	if (AAIGhostPawn* GhostPawn = Cast<AAIGhostPawn>(GetPawn()))
+		return GhostPawn->SpawnLocation;
+	
+	return FVector(0);
+}
+
 
 

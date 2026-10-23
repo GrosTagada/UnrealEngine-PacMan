@@ -25,6 +25,8 @@ public:
 	UPROPERTY(EditAnywhere, Category = "AI")
 	class UBehaviorTree* TreeAsset;
 	
+	FVector SpawnLocation;
+	
 public:
 	// Sets default values for this pawn's properties
 	AAIGhostPawn();

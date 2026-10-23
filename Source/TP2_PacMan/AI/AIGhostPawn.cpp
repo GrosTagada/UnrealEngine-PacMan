@@ -28,6 +28,8 @@ AAIGhostPawn::AAIGhostPawn()
 void AAIGhostPawn::BeginPlay()
 {
 	Super::BeginPlay();
+	
+	SpawnLocation = GetActorLocation();
 }
 
 // Called every frame
